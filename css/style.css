@@ -64,7 +64,21 @@ td { vertical-align: top; }
 
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
 
+/* --------- CORE Styles --------- */
+body {
+	background-image:url("../img/grass_background.jpg");
+	background-repeat: repeat;
+}
 
+#main {
+	width: 960px;
+	background:black;
+	height: 630px;
+	border-style: dashed;
+	border-width: 1px;
+	borer-color:white;
+	margin: 0px auto;
+}
 
 
 
