@@ -32,7 +32,7 @@ $submitter_number = $_POST['submitter_number'];
     // Feel free to change/add your own phone number and name here.
     $people = array(
 //        "+19253300913" => "Alex Tandy",
-		$submitter_number => "JoeShmoe",
+		$submitter_number => "Joe Shmoe",
     );
  
     // Step 5: Loop over all our friends. $number is a phone number above, and 
@@ -49,7 +49,7 @@ $submitter_number = $_POST['submitter_number'];
             $number,
  
             // the sms body
-            "Hey $name, Monkey Party at 6PM. Bring Bananas!"
+            "Hey $name, this thing is working!"
         );
  
         // Display a confirmation message on the screen

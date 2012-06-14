@@ -101,8 +101,7 @@ header nav a {
 	width: 960px;
 	height: 630px;
 	margin: 0px auto;
-	padding: 20px;
-	
+	padding: 20px;	
 }
 
 #main_wrap .transparency {
@@ -150,13 +149,35 @@ footer {
 	
 }
 
-/* --------- Content Styles --------- */
+/* --------- Content Section --------- */
 
 #content h2 {
 	text-align:center;
 	color:black;
 }
 
+form.text_alert {
+	text-align:center;
+}
+
+form.text_alert input {
+	border-radius: 5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	padding:5px;
+}
+
+form.text_alert .text_button {
+	border-radius: 5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	padding:5px 10px;
+	margin-left: 10px;
+}
+
+
+
+/* ---------- Random Styles ---------- */
 
 .floatL {float:left;}
 .floatR { float:right;}
