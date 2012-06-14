@@ -5,7 +5,7 @@ var req = new XMLHttpRequest();
 
 $('button.text_alert').click(function() {
 	
-	var submitter_number = "19253300913";
+	var submitter_number = $('form.text_alert input').val();
 	var params = "submitter_number="+submitter_number;
 	req.open("POST", "sendsms.php", true);
 	
