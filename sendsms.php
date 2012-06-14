@@ -43,7 +43,7 @@ $submitter_number = $_POST['submitter_number'];
  
         // Step 6: Change the 'From' number below to be a valid Twilio number 
         // that you've purchased, or the Sandbox number
-            "415-599-2671", 
+            "415-702-3308", 
  
             // the number we are sending to - Any phone number
             $number,
