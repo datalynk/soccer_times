@@ -29,25 +29,3 @@ $('form.text_alert input').bind('keypress', function(e){
 	}
 });
 
-
-
-
-
-	/*	
-		var submitter_number = $('form.text_alert input').val();
-		var params = "submitter_number="+submitter_number;
-
-
-		$.ajax ({
-			type: "POST",
-			url: "sendsms.php",
-			data: params,
-			success: function(response) {
-				$('form.text_alert input').val('');
-				$('.response').text(response);
-				alert(response);
-			}		
-		});
-			return false;
-	*/
-
