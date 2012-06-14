@@ -1,9 +1,7 @@
 // instantiate AJAX
 var req = new XMLHttpRequest();
 
-
 // pull value from input and send to php script to send a text message.
-
 function submit_and_text() {
 	var submitter_number = $('form.text_alert input').val();
 	var params = "submitter_number="+submitter_number;
@@ -20,7 +18,6 @@ function submit_and_text() {
 	req.send(params);
 }
 
-
 // --------- Event Handlers ---------- //
 $('button.text_button').click(function() {
 	submit_and_text();
@@ -31,4 +28,26 @@ $('form.text_alert input').bind('keypress', function(e){
 		submit_and_text();
 	}
 });
+
+
+
+
+
+	/*	
+		var submitter_number = $('form.text_alert input').val();
+		var params = "submitter_number="+submitter_number;
+
+
+		$.ajax ({
+			type: "POST",
+			url: "sendsms.php",
+			data: params,
+			success: function(response) {
+				$('form.text_alert input').val('');
+				$('.response').text(response);
+				alert(response);
+			}		
+		});
+			return false;
+	*/
 

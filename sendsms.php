@@ -18,9 +18,6 @@ $submitter_number = $_POST['submitter_number'];
     // and move it into the folder containing this file.
     require "twilio_library/Services/Twilio.php";
 
-//TODO: need to get this posting from the javascript xml request.
-
-
     // Step 2: set our AccountSid and AuthToken from www.twilio.com/user/account
     $AccountSid = "AC2dc285374bc24270ac8b84a4a5322c9c";
     $AuthToken = "d479838d2b77952f920e735634468cb6";
@@ -31,8 +28,7 @@ $submitter_number = $_POST['submitter_number'];
     // Step 4: make an array of people we know, to send them a message. 
     // Feel free to change/add your own phone number and name here.
     $people = array(
-//        "+19253300913" => "Alex Tandy",
-		$submitter_number => "Joe Shmoe",
+		$submitter_number => "Soccer Fan",
     );
  
     // Step 5: Loop over all our friends. $number is a phone number above, and 
@@ -49,10 +45,11 @@ $submitter_number = $_POST['submitter_number'];
             $number,
  
             // the sms body
-            "Hey $name, this thing is working!"
+            "Hey $name. Good news. Now youll get an alert right before this game begins!"
         );
  
         // Display a confirmation message on the screen
         echo "Sent message to $name";
     }
+
 ?>
