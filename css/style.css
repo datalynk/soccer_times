@@ -127,6 +127,9 @@ header nav a {
 	margin-top: 2%;
 	margin-right: 2px;
 	background-color:lightgray;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius:10px;
 }
 
 
