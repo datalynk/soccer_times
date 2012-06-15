@@ -98,9 +98,8 @@ header nav a {
 }
 
 #main_wrap {
-	width: 960px;
+	width: 1100px;
 	height: 630px;
-	margin: 0px auto;
 	padding: 20px;	
 }
 
@@ -161,16 +160,25 @@ footer {
 	color:black;
 }
 
-
-/* --------- Table for Game Info --------- */
-
-
+#team1 , #team2 {
+	text-align:center;
+}
 
 #what_game {
 	text-align: center;
 	margin-top: 40px;
 }
 
+#what_game input , #what_game button{
+	border-radius: 5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+/* --------- Table for Game Info --------- */
+tr th.game_column {
+	padding-right: 36px;
+}
 
 form.text_alert {
 	text-align:center;
