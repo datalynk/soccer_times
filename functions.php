@@ -11,7 +11,7 @@ define('TWILIO_NUMBER','415-702-3308');
 
 $config = array( 'host' => 'localhost',
 				 'user' => 'root',
-				 'password' => '',
+				 'password' => 'root',
 				 'dbname' => 'sports_times');	
 				 				 
 $db = new EasyDB($config);

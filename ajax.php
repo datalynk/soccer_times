@@ -11,14 +11,14 @@ if($action == 'get_matched_games') {
 	
 	if(count($games) > 0) { ?>
 		
-    <table>
+    <table class="game_info">
       <tr>
       <?php
 	  $columns = array_keys($games[0]);
 		  
 	  foreach($columns as $column) { ?>
 		  
-        <td width="200"><?=$column?></td>
+        <th class="game_column" width="200"><?=$column?></th>
 		<?php
 	  } ?>
       </tr>
@@ -29,6 +29,10 @@ if($action == 'get_matched_games') {
             <tr>
             <?php
 			foreach($game as $key=>$value) {
+				$class = "";
+				if (strpos($key,'date_time') !== false) {	
+					$class = 'class="game_time"';				
+				}				
 				
 				if (strpos($key,'date') !== false) {
 					
@@ -39,9 +43,8 @@ if($action == 'get_matched_games') {
 					$value = '<a href="'.$value.'">buy tickets</a>';
 						
 				}
-				 ?> 
-            	
-            	<td><?=$value?></td>
+			?> 
+            	<td <?=$class?> ><?=$value?></td>
             <?php
 			} ?>
 			</tr>	

@@ -121,6 +121,7 @@ header nav a {
 #content {
 	width: 70%;
 	height: 400px;
+	padding: 15px;
 	float:left;
 	position:relative;
 	margin-top: 2%;
@@ -129,6 +130,7 @@ header nav a {
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius:10px;
+	overflow-y: scroll;
 }
 
 
@@ -139,10 +141,9 @@ header nav a {
 	float: right;
 	display:inline;
 	position:relative;
-	background-color: gray;
 	margin-top:2%;
 	padding:10px;
-	margin-left:2px;
+	margin-right:10px;
 }
 
 footer {
@@ -151,10 +152,25 @@ footer {
 
 /* --------- Content Section --------- */
 
+#content h2:first-child {
+	margin-bottom: 5px;
+}
+
 #content h2 {
 	text-align:center;
 	color:black;
 }
+
+
+/* --------- Table for Game Info --------- */
+
+
+
+#what_game {
+	text-align: center;
+	margin-top: 40px;
+}
+
 
 form.text_alert {
 	text-align:center;

@@ -60,12 +60,16 @@ $('form.text_alert input').bind('keypress', function(e){
 
 
 $('.search_games').click(function() {
-	
 	get_search_results();
 });
 
+
+
 $('.update_database').click(function() {
-	
 	update_database();
 });
+
+// Store the Final Gametime to be used for the ticker. 
+var final_game_time = $('tbody tr:last-child td.game_time').text();
+
 
