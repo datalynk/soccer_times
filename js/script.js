@@ -58,18 +58,46 @@ $('form.text_alert input').bind('keypress', function(e){
 	}
 });
 
-
 $('.search_games').click(function() {
 	get_search_results();
 });
-
-
 
 $('.update_database').click(function() {
 	update_database();
 });
 
-// Store the Final Gametime to be used for the ticker. 
-var final_game_time = $('tbody tr:last-child td.game_time').text();
+
+/*
+function countdown() {
+	
+//		July 1, 2012, 8:45 pm
+	// Store the Final Gametime to be used for the ticker. 
+	var final_game_time = $('tbody tr:last-child td.game_time').text();
+
+
+	this.start_time = 
+	this.target_time = ".response";
+	
+	countdown.prototype.init() {
+		this.reset();
+		setInterval(this.name + '.tick()', 1000);
+	}
+	
+	countdown.prototype.reset() {
+		time = this.start_time.split(":");
+		this.minutes = parseInt(time_ary[0]);
+		this.seconds = parseInt(time_ary[1]);
+		this.update_target();
+	}
+	
+}
+*/
+
+
+
+
+
+
+
 
 
