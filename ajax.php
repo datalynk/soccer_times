@@ -54,7 +54,7 @@ if($action == 'get_matched_games') {
 				<td><?=$game['match_name']?></td>
 				<td><?=$short_location?></td>
 				<td><?=$game['country']?></td>
-				<td><?=$game_time ?></td>
+				<td class="game_time"><?=$game_time ?></td>
 				<td><?=$time_difference?></td>
 				<td><a href="<?=$game['other']?>">buy</a></td>
                 
