@@ -8,29 +8,39 @@ define('EMAIL','alerts@sportstimes.com');
 define('TWILIO_ID','AC2dc285374bc24270ac8b84a4a5322c9c');
 define('TWILIO_TOKEN','d479838d2b77952f920e735634468cb6');
 define('TWILIO_NUMBER','415-702-3308');
+define('GEONAME_USERNAME','shaunpersad');
 
+/* Tandy's database */
+/*
 $config = array( 'host' => 'localhost',
 				 'user' => 'root',
 				 'password' => 'root',
 				 'dbname' => 'sports_times');	
+*/
+/*Shaun's database */				 
+$config = array( 'host' => 'localhost',
+				 'user' => 'root',
+				 'password' => '',
+				 'dbname' => 'sports_times');				 
 				 				 
 $db = new EasyDB($config);
 
 function getMatchedGames($team1, $team2) {
 	
 	global $db;
+	$now = time();
 	
 	if($team1 == '') {
 		
-		$result = $db->query('SELECT * FROM games WHERE (teams LIKE "%$%") AND date_time > NOW() ORDER BY date_time',array($team2));		
+		$result = $db->query('SELECT * FROM games WHERE (teams LIKE "%$%") AND date_time > $ ORDER BY date_time',array($team2,$now));		
 	}
 	else if($team2 == '') {
 
-		$result = $db->query('SELECT * FROM games WHERE (teams LIKE "%$%") AND date_time > NOW() ORDER BY date_time',array($team1));		
+		$result = $db->query('SELECT * FROM games WHERE (teams LIKE "%$%") AND date_time > $ ORDER BY date_time',array($team1,$now));		
 	}
 	else {
 	
-		$result = $db->query('SELECT * FROM games WHERE (teams LIKE "$%$" OR teams LIKE "$%$") AND date_time > NOW() ORDER BY date_time',array($team1,$team2,$team2,$team1));
+		$result = $db->query('SELECT * FROM games WHERE (teams LIKE "$%$" OR teams LIKE "$%$") AND date_time > $ ORDER BY date_time',array($team1,$team2,$team2,$team1,$now));
 	}
 	
 	$games = array();
@@ -51,7 +61,11 @@ function updateTicketcity() {
 	teams
 	match_name
 	location
+	country
+	timezone
+	timezone_abbr
 	date_time
+	other
 	date_updated
 	
 	TICKET CITY RSS STRUCTURE:
@@ -92,8 +106,30 @@ function updateTicketcity() {
 
 			$description = explode(',',$item->description); //breaks item description into 3 pieces
 			$match_name_and_teams = explode('-',$description[0]); // first description piece is then broken into two pieces
-			$location = $description[1]; //the second description piece is the location
-			$date_time = date("Y-m-d H:i:s",strtotime($description[2]));   // the third description piece is the date and time of the event
+			$ungeocoded_location = $description[1]; //the second description piece is the location
+			$date_time = $description[2];   // the third description piece is the date and time of the event
+			
+			/* Send the address to google.  
+			This sends back the location lat and lng, as well as a full address, 
+			which is useful to bring all addresses to a common format. */
+			$geocoding_response = json_decode(@file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($ungeocoded_location).
+																 												 '&sensor=false'));																					 
+			//full address																									 
+			$location = $geocoding_response->results[0]->formatted_address;
+			
+			/* Send the lat and lng to geoname to get the timezone */
+			$url = 'http://api.geonames.org/timezoneJSON?formatted=true&lat='.$geocoding_response->results[0]->geometry->location->lat.
+																									'&lng='.$geocoding_response->results[0]->geometry->location->lng.
+																									'&username='.GEONAME_USERNAME.
+																									'&style=full';
+			$geoname_response = json_decode(@file_get_contents($url));	
+																					
+			$country = $geoname_response->countryName;
+			$timezone = $geoname_response->timezoneId;
+			
+			$dateTime = new DateTime();
+			$dateTime->setTimeZone(new DateTimeZone($timezone));
+			$abbreviation = $dateTime->format('T'); 
 				
 			$game = array();
 			$game['sport'] = $sport;
@@ -101,7 +137,10 @@ function updateTicketcity() {
 			$game['match_name'] = trim(strtolower($match_name_and_teams[0]));
 			$game['teams'] = trim(str_replace('tickets','',strtolower($match_name_and_teams[1]))); //makes teams lowercase, then removes the word "tickets", then removes spaces
 			$game['location'] = $location;
-			$game['date_time'] = $date_time;
+			$game['country'] = $country;
+			$game['timezone'] = $timezone;
+			$game['timezone_abbr'] = $abbreviation;
+			$game['date_time'] =  strtotime(ConvertTimezoneToAnotherTimezone($date_time,$timezone,date_default_timezone_get()));
 			$game['other'] = $item->link;
 				
 			$db->insertOrUpdateIfExists('games',$game,$game);				
@@ -115,13 +154,20 @@ function sendAlerts() {
 	
 	global $db;
 	// get past alerts, starting two minutes into the future (to accomodate for delays)
-	$result = $db->query('SELECT * FROM alerts WHERE (time_of_alert < (NOW() + INTERVAL 2 MINUTE)) AND status = '.NOT_SENT);	
-	
+	$time_plus_two_minutes = time() + (2*60);
+	$result = $db->query('SELECT * FROM alerts WHERE (time_of_alert < $)) AND status = '.NOT_SENT,array($time_plus_two_minutes));	
+
+	$system_timezone = date_default_timezone_get();
+
 	while($alert = mysql_fetch_assoc($result)) {
 		
 		$game = $db->selectOne('*','games',array('id'=>$alert['game_id']));
-			
-		$message = 'Hi there!  This is your alert for '.$game['teams'].', on '.date("F j, Y, g:i a",strtotime($game['date_time']));
+
+    	date_default_timezone_set($game['timezone']);
+
+		$game_time = date("g:i a, F j, Y",$game['date_time']). ' ('.$game['timezone_abbr'].')';
+						
+		$message = 'Hi there!  This is your alert for '.$game['teams'].', on '.$game_time;
 		$message.= "<br />It's ".$alert['time_diff_value'].' '.$alert['time_diff_unit'].' away!';		
 	
 		if($alert['contact_type'] == 'email') {
@@ -160,7 +206,9 @@ function sendAlerts() {
 				);
 			}					
 		}
-	}	
+	}
+	date_default_timezone_set($system_timezone);		
+	
 }
 
 function makeAlert($contact_name,$contact_type,$contact_info,$game_id, $time_value, $time_unit) {
@@ -184,15 +232,15 @@ function makeAlert($contact_name,$contact_type,$contact_info,$game_id, $time_val
 	
 	if (strpos($time_unit,'day') !== false) {
 					
-		$time_of_alert = date("Y-m-d H:i:s",strtotime($game['date_time']) - ($time_value * 60*60*24)); 
+		$time_of_alert = strtotime($game['date_time']) - ($time_value * 60*60*24); 
 	}
 	else if (strpos($time_unit,'hour') !== false) {
 					
-		$time_of_alert = date("Y-m-d H:i:s",strtotime($game['date_time']) - ($time_value * 60*60));
+		$time_of_alert = strtotime($game['date_time']) - ($time_value * 60*60);
 	}
 	else if (strpos($time_unit,'minute') !== false) {
 					
-		$time_of_alert = date("Y-m-d H:i:s",strtotime($game['date_time']) - ($time_value * 60));
+		$time_of_alert = strtotime($game['date_time']) - ($time_value * 60);
 	}
 	// make alert
 	$alert['game_id'] = $game['id'];
@@ -205,6 +253,76 @@ function makeAlert($contact_name,$contact_type,$contact_info,$game_id, $time_val
 	$alert['status'] = NOT_SENT;
 
 	$db->insert('alerts',$alert);	
+}
+
+function getTimeDifference($date_time) { //gets the difference between now and the specified time
+	
+	$difference = $date_time - time();
+	
+	if($difference/86400 >= 1) {
+		
+		$return = round($difference/86400). ' days';
+	}
+	elseif($difference/3600 >= 1) {
+		
+		$return = round($difference/3600). ' hours';
+	}
+	elseif($difference/60 >= 1) {
+		
+		$return = round($difference/60). ' minutes';
+	}
+	else {
+		$return = $difference .' seconds';
+	}
+
+	return $return;	
+}
+
+function ConvertTimezoneToAnotherTimezone($time,$currentTimezone,$timezoneRequired)
+{
+    $dayLightFlag  = false;
+    $dayLgtSecCurrent = $dayLgtSecReq = 0;
+    $system_timezone = date_default_timezone_get();
+    $local_timezone = $currentTimezone;
+    date_default_timezone_set($local_timezone);
+    $local = date("Y-m-d H:i:s");
+    
+     $daylight_flag = date("I",strtotime($time));
+     if($daylight_flag == 1){ 
+	    $dayLightFlag  = true;
+	    $dayLgtSecCurrent = -3600;
+    }
+    date_default_timezone_set("GMT");
+    $gmt = date("Y-m-d H:i:s ");
+ 
+    $require_timezone = $timezoneRequired;
+    date_default_timezone_set($require_timezone);
+    $required = date("Y-m-d H:i:s ");
+    
+    $daylight_flag = date("I",strtotime($time));
+    if($daylight_flag == 1){ 
+	    $dayLightFlag  = true;
+	    $dayLgtSecReq = +3600;
+    }
+    
+    date_default_timezone_set($system_timezone);  
+  
+    $diff1 = (strtotime($gmt) - strtotime($local));
+    $diff2 = (strtotime($required) - strtotime($gmt));
+
+    $date = new DateTime($time);
+       
+    $date->modify("+$diff1 seconds");
+    $date->modify("+$diff2 seconds");
+    
+    if($dayLightFlag){ 
+	   $final_diff =  $dayLgtSecCurrent + $dayLgtSecReq;
+	   $date->modify("$final_diff seconds");
+    }
+    
+    $timestamp = $date->format("Y-m-d H:i:s ");
+       
+    return $timestamp;
 }
 
 ?>
