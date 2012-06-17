@@ -22,6 +22,7 @@ if($action == 'get_matched_games') {
 		
     <table class="game_info">
       <tr>
+      
         <th class="game_column" width="200">Teams</th>
         <th class="game_column" width="200">Match</th>
         <th class="game_column" width="200">Location</th>
@@ -29,7 +30,7 @@ if($action == 'get_matched_games') {
         <th class="game_column" width="200">Game Time</th>
         <th class="game_column" width="200">Time Left</th>
         <th class="game_column" width="200">Tickets</th>
-        
+        <th class="game_column" width="200">Alert Me</th>
         
       </tr>
       <?php
@@ -57,6 +58,7 @@ if($action == 'get_matched_games') {
 				<td class="game_time"><?=$game_time ?></td>
 				<td><?=$time_difference?></td>
 				<td><a href="<?=$game['other']?>">buy</a></td>
+                <td><input type="checkbox" class="alert_checkbox" id="alert_<?=$game['id']?>" /></td>
                 
 			</tr>	
 			<?php	
@@ -86,15 +88,29 @@ else if($action == 'send_alerts') {
 }
 else if($action == 'make_alert') {
 	
-	$games = json_decode($_POST['games']);
+	$games = explode('_',$_POST['games']);
 	foreach($games as $game_id) {	
 	
-		makeAlert(trim($_POST['contact_name']),
-					 trim($_POST['contact_type']),
-					 trim($_POST['contact_info']),
+		if(filter_var(trim($_POST['contact_email']), FILTER_VALIDATE_EMAIL)) {
+	
+			makeAlert(trim($_POST['contact_name']),
+					 'email',
+					 trim($_POST['contact_email']),
 					 intval($game_id),
 					 intval($_POST['time_value']),
 					 trim($_POST['time_unit']));
+		}
+		if(trim($_POST['contact_phone']) > 0) {
+	
+			makeAlert(trim($_POST['contact_name']),
+					 'text',
+					 trim($_POST['contact_phone']),
+					 intval($game_id),
+					 intval($_POST['time_value']),
+					 trim($_POST['time_unit']));
+		}		
+		
+
 	}
 	echo 'success';
 }

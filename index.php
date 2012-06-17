@@ -32,11 +32,28 @@
 				<?php include('find.php'); ?>
 			</div>
 			<h2>Upcoming Games for the Eurocup</h2>
-			<div id ="upcoming games"><?php echo file_get_contents('http://localhost/ajax.php?action=get_matched_games') ?> </div>
+			<div id ="upcoming games"><?php echo file_get_contents('http://localhost/soccer_times/ajax.php?action=get_matched_games') ?> </div>
 			<form class="text_alert">
-				<input type="text" class="submitter_number"placeholder="please enter your number"/>
+				<input type="text" id="contact_name" placeholder="your name"/> &nbsp;
+                <input type="text" id="contact_email" placeholder="your email"/> &nbsp; and/or &nbsp;
+                <input type="text" id="contact_phone" placeholder="your phone number"/> &nbsp; alert me 
+                <select id="time_value">
+                	<?php
+					$values = array(1,2,3,4,5,6,7,8,9,10,15,20,25,30);
+					foreach($values as $value) { ?>
+                    
+                    	<option value="<?=$value?>"><?=$value?></option>
+                    <?php
+					} ?>
+                </select>
+                <select id="time_unit">
+                	<option value="minutes">minutes</option>
+                    <option value="hours">hours</option>
+                    <option value="days">days</option>
+                </select> 
+                before the game   
 			</form>
-			<button class="text_button">Alert me via text</button>
+			<button class="alert_button">Alert me</button>
 			<div class="response"></div>
 		</div>
 		<div id="sidebar_right">			

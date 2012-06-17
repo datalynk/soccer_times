@@ -20,30 +20,62 @@ function submit_and_text() {
 
 function get_search_results() {
 	
-		var tosend = {
-				action:'get_matched_games',
-				team1:$('#team1').val(),
-				team2:$('#team2').val()
-		};
-		$.post('ajax.php', tosend, function(response) {
+	var tosend = {
+			action:'get_matched_games',
+			team1:$('#team1').val(),
+			team2:$('#team2').val()
+	};
+	$.post('ajax.php', tosend, function(response) {
 					
-			if(response) {
+		if(response) {
 					
-				$('.search_results').html(response).fadeIn('fast');
-			}				
-		});		
+			$('.search_results').html(response).fadeIn('fast');
+		}				
+	});		
 	
 }
 
 function update_database() {
 	
+	var tosend = {
+			action:'update_database'
+	};
+	$.post('ajax.php', tosend, function(response) {	
+	
+		alert(response);
+	});		
+	
+}
+
+function make_alerts() {
+	
+	var games = new Array();
+	var raw_id;
+	var game_id;
+	$('.alert_checkbox:checked').each(function(index,element) {
+			
+		raw_id = $(this).attr('id').split('_');
+		game_id = raw_id[1];
+		games.push(game_id);			
+	});
+		
+	if(games.length > 0) {
+	
 		var tosend = {
-				action:'update_database'
+				action:'make_alert',
+				games:games.join('_'),
+				contact_name:$('#contact_name').val(),
+				contact_email:$('#contact_email').val(),
+				contact_phone:$('#contact_phone').val(),
+				time_value:$('#time_value option:selected').val(),
+				time_unit:$('#time_unit option:selected').val()
+	
 		};
 		$.post('ajax.php', tosend, function(response) {	
 		
 			alert(response);
-		});		
+		});
+	}
 	
 }
 
@@ -66,6 +98,10 @@ $('.update_database').click(function() {
 	update_database();
 });
 
+$('.alert_button').click(function() {
+	
+	make_alerts();
+});
 
 /*
 function countdown() {

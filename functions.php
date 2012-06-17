@@ -119,9 +119,9 @@ function updateTicketcity() {
 			
 			/* Send the lat and lng to geoname to get the timezone */
 			$url = 'http://api.geonames.org/timezoneJSON?formatted=true&lat='.$geocoding_response->results[0]->geometry->location->lat.
-																									'&lng='.$geocoding_response->results[0]->geometry->location->lng.
-																									'&username='.GEONAME_USERNAME.
-																									'&style=full';
+																	  '&lng='.$geocoding_response->results[0]->geometry->location->lng.
+																	  '&username='.GEONAME_USERNAME.
+																	  '&style=full';
 			$geoname_response = json_decode(@file_get_contents($url));	
 																					
 			$country = $geoname_response->countryName;
@@ -225,23 +225,29 @@ function makeAlert($contact_name,$contact_type,$contact_info,$game_id, $time_val
 		status
 		date_added
 	*/
-	
-	$game = $db->selectOne('*','games',array('id'=>$alert['game_id'])); //get game
+	global $db;
+	$game = $db->selectOne('*','games',array('id'=>$game_id)); //get game
 	
 	//get time difference, depending on the interval
 	
 	if (strpos($time_unit,'day') !== false) {
 					
-		$time_of_alert = strtotime($game['date_time']) - ($time_value * 60*60*24); 
+		$time_of_alert = $game['date_time'] - ($time_value * 60*60*24); 
 	}
 	else if (strpos($time_unit,'hour') !== false) {
 					
-		$time_of_alert = strtotime($game['date_time']) - ($time_value * 60*60);
+		$time_of_alert = $game['date_time'] - ($time_value * 60*60);
 	}
 	else if (strpos($time_unit,'minute') !== false) {
 					
-		$time_of_alert = strtotime($game['date_time']) - ($time_value * 60);
+		$time_of_alert = $game['date_time'] - ($time_value * 60);
 	}
+	
+	if($time_value == 1) {
+		
+		$time_unit = str_replace('s','',$time_unit);	
+	}
+	
 	// make alert
 	$alert['game_id'] = $game['id'];
 	$alert['contact_name'] = $contact_name;
@@ -252,7 +258,7 @@ function makeAlert($contact_name,$contact_type,$contact_info,$game_id, $time_val
 	$alert['time_diff_unit'] = $time_unit;
 	$alert['status'] = NOT_SENT;
 
-	$db->insert('alerts',$alert);	
+	return $db->insertOrUpdateIfExists('alerts',$alert,$alert);	
 }
 
 function getTimeDifference($date_time) { //gets the difference between now and the specified time
