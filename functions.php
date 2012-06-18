@@ -10,17 +10,25 @@ define('TWILIO_TOKEN','d479838d2b77952f920e735634468cb6');
 define('TWILIO_NUMBER','415-702-3308');
 define('GEONAME_USERNAME','shaunpersad');
 
-/* Tandy's database */
+/* Tandy's local database */
 /*
 $config = array( 'host' => 'localhost',
 				 'user' => 'root',
 				 'password' => 'root',
 				 'dbname' => 'sports_times');	
 */
-/*Shaun's database */				 
+/*Shaun's local database */	
+/*			 
 $config = array( 'host' => 'localhost',
 				 'user' => 'root',
 				 'password' => '',
+				 'dbname' => 'sports_times');				 
+*/
+/*Shaun's live database */	
+			 
+$config = array( 'host' => 'mysql.boredmap.com',
+				 'user' => 'times_user',
+				 'password' => 'ilovelamp',
 				 'dbname' => 'sports_times');				 
 				 				 
 $db = new EasyDB($config);
@@ -155,7 +163,7 @@ function sendAlerts() {
 	global $db;
 	// get past alerts, starting two minutes into the future (to accomodate for delays)
 	$time_plus_two_minutes = time() + (2*60);
-	$result = $db->query('SELECT * FROM alerts WHERE (time_of_alert < $)) AND status = '.NOT_SENT,array($time_plus_two_minutes));	
+	$result = $db->query('SELECT * FROM alerts WHERE (time_of_alert < $) AND status = '.NOT_SENT,array($time_plus_two_minutes));	
 
 	$system_timezone = date_default_timezone_get();
 
@@ -179,6 +187,8 @@ function sendAlerts() {
 			$subject = 'Alert for: '.$game['teams'];
 					
 			mail($alert['contact_info'],$subject,$message,$headers);	
+			$db->update('alerts',array('status'=>SENT),array('id'=>$alert['id']));
+	
 		}
 		else if($alert['contact_type'] == 'text') {
 			
@@ -204,7 +214,9 @@ function sendAlerts() {
 					// the sms body
 					$message
 				);
-			}					
+			}
+			$db->update('alerts',array('status'=>SENT),array('id'=>$alert['id']));
+					
 		}
 	}
 	date_default_timezone_set($system_timezone);		

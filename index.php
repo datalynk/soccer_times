@@ -32,7 +32,7 @@
 				<?php include('find.php'); ?>
 			</div>
 			<h2>Upcoming Games for the Eurocup</h2>
-			<div id ="upcoming games"><?php echo file_get_contents('http://localhost/soccer_times/ajax.php?action=get_matched_games') ?> </div>
+			<div id ="upcoming games"><?php echo file_get_contents('http://shaunpersad.com/soccer_times/ajax.php?action=get_matched_games') ?> </div>
 			<form class="text_alert">
 				<input type="text" id="contact_name" placeholder="your name"/> &nbsp;
                 <input type="text" id="contact_email" placeholder="your email"/> &nbsp; and/or &nbsp;
