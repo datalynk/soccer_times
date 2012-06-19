@@ -98,7 +98,7 @@ header nav a {
 }
 
 #main_wrap {
-	width: 1200px;
+	width: 100%;
 	height: 630px;
 }
 
@@ -115,11 +115,10 @@ header nav a {
 }
 
 #content {
-	width: 960px;
+	width: 75%;
 	padding: 15px;
-	float:left;
+	margin: 0px auto;
 	position:relative;
-	margin-right: 2px;
 	background-image:url('../img/table_background.jpg');
 	border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -129,14 +128,13 @@ header nav a {
 
 
 #sidebar_right {
-	width: 14%;
+	display:none;
+	width: 160px;
 	background-color:black;
 	height:200px;
 	float: right;
-	display:inline;
 	position:relative;
 	margin-top:2%;
-	padding:10px;
 	margin-right:10px;
 }
 
