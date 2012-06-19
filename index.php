@@ -18,17 +18,18 @@
 </head>
 <body>
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<header>
-		<img class="header_ball" src="/img/soccerball.svg"/>
-		<h1>title</h1>
-		<nav class="floatR">
-			<a href="#">Calendar</a>
-			<a href="#">Contact & Advertise</a>
-		</nav>
-	</header>
+	
 	<div id="main_wrap">
 		<div class="transparency"> </div>
 		<div id="content">
+		<header>
+			<img class="header_ball" src="/img/soccerball.svg"/>
+			<h1>When's my Game?</h1>
+			<nav class="floatR">
+				<a href="#">Calendar</a>
+				<a href="#">Contact & Advertise</a>
+			</nav>
+		</header>
 			<h2>What game are you looking for?</h2>
 			<div id = "what_game">
 				<?php include('find.php'); ?>
