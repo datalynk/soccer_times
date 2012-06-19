@@ -112,9 +112,6 @@ $('.close_button').click(function() {
 	$('#text_message_lb').hide();
 });
 
-
-
-
 /*
 function countdown() {
 	

@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 sphinxcontrib-phpdomain
 
+=======
+sphinxcontrib-phpdomain
+
+>>>>>>> 702de34b50b724dc6a3047636c5b647f6f43666a
