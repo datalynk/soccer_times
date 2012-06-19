@@ -103,9 +103,12 @@ $('.alert_button').click(function() {
 });
 
 //open up lightbox when "Alert Me" is clicked
-$('tr th:last-child').click(function() {
+$('tr th:last-child, .alert_checkbox').bind("click", function() {
 	$('#text_message_lb').show();
 });
+
+
+
 
 // allow user to close lightbox
 $('.close_button').click(function() {

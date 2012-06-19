@@ -13,7 +13,7 @@
             <br />            
 -->
             <input type="text" id="team1" placeholder="team 1" /> &nbsp; vs. &nbsp; <input type="text" id="team2" placeholder="team 2" />
-            <button class="search_games"> find games </button>
+            <button class="search_games"> Find Games </button>
             <br />
             <br />
             <div class="search_results">

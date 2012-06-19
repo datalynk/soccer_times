@@ -34,7 +34,7 @@
 				<?php include('find.php'); ?>
 			</div>
 			<h2>Upcoming Games for the Eurocup</h2>
-			<div id ="upcoming games"><?php echo file_get_contents('http://shaunpersad.com/soccer_times/ajax.php?action=get_matched_games') ?> </div>
+			<div id ="upcoming "><?php echo file_get_contents('http://shaunpersad.com/soccer_times/ajax.php?action=get_matched_games') ?> </div>
 			<div class="response"></div>
 		</div>
 		<div id="sidebar_right">			
