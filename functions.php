@@ -161,15 +161,12 @@ function updateTicketcity() {
 function sendAlerts() {
 	
 	global $db;
-<<<<<<< HEAD
 	// get past alerts, starting 15 minutes into the future (to accomodate for delays)
 	$time_plus_fifteen_minutes = time() + (15*60);
 	$result = $db->query('SELECT * FROM alerts WHERE (time_of_alert < $) AND status = '.NOT_SENT,array($time_plus_fifteen_minutes));	
-=======
 	// get past alerts, starting two minutes into the future (to accomodate for delays)
 	$time_plus_two_minutes = time() + (2*60);
 	$result = $db->query('SELECT * FROM alerts WHERE (time_of_alert < $) AND status = '.NOT_SENT,array($time_plus_two_minutes));	
->>>>>>> 702de34b50b724dc6a3047636c5b647f6f43666a
 
 	$system_timezone = date_default_timezone_get();
 

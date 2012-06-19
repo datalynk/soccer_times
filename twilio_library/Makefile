@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Twilio API helper library.
 # See LICENSE file for copyright and license details.
 
@@ -76,4 +75,3 @@ test:
 	@phpunit --configuration tests/phpunit.xml
 
 .PHONY: all clean dist test
->>>>>>> 702de34b50b724dc6a3047636c5b647f6f43666a

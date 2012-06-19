@@ -187,6 +187,7 @@ footer {
 	border-radius: 10px;
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px;
+	display:none;
 }
 
 #text_message_lb img {
@@ -254,7 +255,6 @@ form.text_alert .text_button {
 	text-decoration:none;
 	text-shadow:1px 1px 0px #ffffff;
 }
-
 
 /* --------- Table for Game Info --------- */
 tr th.game_column {
