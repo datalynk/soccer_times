@@ -30,7 +30,7 @@ if($action == 'get_matched_games') {
         <th class="game_column" width="200">Game Time</th>
         <th class="game_column" width="200">Time Left</th>
         <th class="game_column" width="200">Tickets</th>
-        <th class="game_column" width="200">Alert Me</th>
+        <th class="alert_me" width="200">Alert Me</th>
         
       </tr>
       <?php

@@ -59,7 +59,7 @@ textarea { overflow: auto; vertical-align: top; resize: vertical; }
 input:valid, textarea:valid {  }
 input:invalid, textarea:invalid { background-color: #f0dddd; }
 
-table { border-collapse: collapse; border-spacing: 0; }
+/* table { border-collapse: collapse; border-spacing: 0; } */
 td { vertical-align: top; }
 
 .chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
@@ -124,7 +124,7 @@ header nav a {
 	position:relative;
 	margin-top: 2%;
 	margin-right: 2px;
-	background-color:lightgray;
+	background-image:url('../img/table_background.jpg');
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius:10px;
@@ -258,11 +258,15 @@ form.text_alert .text_button {
 
 /* --------- Table for Game Info --------- */
 tr th.game_column {
-	padding-right: 36px;
+	padding-bottom: 12px;
 }
 
 tr th:last-child:hover {
 	cursor:pointer;
+}
+
+tbody {
+	text-align:center;
 }
 
 /* ---------- Random Styles ---------- */
