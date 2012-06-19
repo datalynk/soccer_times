@@ -23,15 +23,18 @@
 		<div class="transparency"> </div>
 		<div id="content">
 		<header>
-			<img class="header_ball" src="/img/soccerball.svg"/>
-			<h1>When's my Game?</h1>
+			<img src="/img/line.png"/>
+			<img src="/img/soccerlogo.png"/>
+			<img src="/img/line.png"/>
 			<nav class="floatR">
-				<a href="#">About</a>
-				<a href="#">Contact & Advertise</a>
+				<a href="#"><img src="/img/e-maillogo.png"/></a>
 			</nav>
 		</header>
 			<h2>What game are you looking for?</h2>
 			<div id = "what_game">
+				<img class="venn" src="/img/venn-diagram.png"/>
+				<input type="text" id="teamy1" placeholder="team 1" /> 
+				<input type="text" id="teamy2" placeholder="team 2" />
 				<?php include('find.php'); ?>
 			</div>
 			<h2>Upcoming Games for the Eurocup</h2>
