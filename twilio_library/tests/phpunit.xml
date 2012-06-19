@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <phpunit bootstrap="./Bootstrap.php">
   <testsuites>
     <testsuite name="Services Twilio Test Suite">
@@ -6,12 +5,3 @@
     </testsuite>
   </testsuites>
 </phpunit>
-=======
-<phpunit bootstrap="./Bootstrap.php">
-  <testsuites>
-    <testsuite name="Services Twilio Test Suite">
-      <directory>./</directory>
-    </testsuite>
-  </testsuites>
-</phpunit>
->>>>>>> 702de34b50b724dc6a3047636c5b647f6f43666a
