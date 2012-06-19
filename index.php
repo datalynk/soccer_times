@@ -26,7 +26,7 @@
 			<img class="header_ball" src="/img/soccerball.svg"/>
 			<h1>When's my Game?</h1>
 			<nav class="floatR">
-				<a href="#">Calendar</a>
+				<a href="#">About</a>
 				<a href="#">Contact & Advertise</a>
 			</nav>
 		</header>
@@ -35,7 +35,7 @@
 				<?php include('find.php'); ?>
 			</div>
 			<h2>Upcoming Games for the Eurocup</h2>
-			<div id ="upcoming "><?php echo file_get_contents('http://shaunpersad.com/soccer_times/ajax.php?action=get_matched_games') ?> </div>
+			<div id ="upcoming "><?php echo file_get_contents('http://whensmygame.com/soccer_times/ajax.php?action=get_matched_games') ?> </div>
 			<div class="response"></div>
 		</div>
 		<div id="sidebar_right">			
