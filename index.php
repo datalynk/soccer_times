@@ -30,13 +30,13 @@
 				<img src="/img/line.png"/>
 				<img src="/img/soccerlogo.png"/>
 				<img src="/img/line.png"/>
-				<nav class="floatR">
+				<nav>
 					<a href="#"><img src="/img/e-maillogo.png"/></a>
 				</nav>
 			</header>
 
 			<!-- Search section for what game a user is looking for -->
-			<h2>What game are you looking for?</h2>
+			<h2 class="search_game_title">WHAT GAME ARE YOU LOOKING FOR?</h2>
 			<div id = "what_game">
 				<img class="venn" src="/img/venn-diagram.png"/>			
 				<a class="go" href="#"></a>
@@ -44,9 +44,14 @@
 			</div>
 		
 			<!-- Upcoming Games section. Shows games that will be coming up soon. -->
-			<h2 class="upcoming_banner">Upcoming Games for the Eurocup</h2>
+			<div id="upcoming_games_title"</div>
+				<img src="/img/littleline.png"/>
+				<h2 class="upcoming_games_title">Upcoming Games</h2>
+				<img src="/img/littleline.png"/>
+			</div>
+			<div class="upcoming_banner"></div>
 			
-			<div id ="upcoming"><?php echo file_get_contents('http://shaunpersad.com/soccer_times/ajax.php?action=get_matched_games') ?> </div>
+			<div id="upcoming"><?php echo file_get_contents('http://shaunpersad.com/soccer_times/ajax.php?action=get_matched_games') ?> </div>
 			<div class="response"></div>
 		</div>
 		<div id="sidebar_right">			
