@@ -35,18 +35,30 @@
 			<!-- Search section for what game a user is looking for -->
 		
 			<div id = "what_game">
-				<h2 class="search_game_title">WHAT GAME ARE YOU LOOKING FOR?</h2>
-				<img class="venn" src="img/venn-diagram.png"/>			
-				<a class="go" href="#"></a>
-				<div id="input_holder">
-					<input type="text" id="teamy1" placeholder="ENTER TEAM 1" /> 
-					<input type="text" id="teamy2" placeholder="ENTER TEAM 2" />
-	            </div>
+				<div class="pre_search">
+					<h2 class="search_game_title">WHAT GAME ARE YOU LOOKING FOR?</h2>
+					<img class="venn" src="img/venn-diagram.png"/>			
+					<a class="go" href="#"></a>
+					<div id="input_holder">
+						<input type="text" id="teamy1" placeholder="ENTER TEAM 1" /> 
+						<input type="text" id="teamy2" placeholder="ENTER TEAM 2" />
+	            	</div>
+				</div>
 				<button class="search_games"></button>
 			</div>
 			
-			<div class="search_results"></div>
-			
+			<div class="search_results">
+		<!--	
+				<div class="button_nav">
+					<button class="search_butt"></button>
+					<button class="tweet_butt"></button>
+					<button class="alert_butt"></button>
+					<button class="buy_butt"></button>
+				</div>
+		-->	
+				<button class="new_search"> </button>
+			</div>
+
 			<!-- Upcoming Games section. Shows games that will be coming up soon. -->
 			<div id="upcoming_games_title">
 				<img src="img/littleline.png"/>

@@ -29,11 +29,18 @@ function get_search_results() {
 					
 		if(response) {
 
-			$("#what_game").children().fadeOut("slow",function(a) {
-				$('.search_results').html(response).fadeIn('fast');
+			$(".pre_search").fadeOut("slow",function(a) {
+				$('.search_results').append(response).fadeIn('fast');
+				$("button.search_games").hide();
+				$("button.new_search").show();
+				$(".search_results p").remove();
 			});
-			
 		}	
+		
+		else {
+			$(".search_results").append("<p>No match results found. Try searching for another game.</p>");
+		}
+			
 		$('input#teamy1, input#teamy2').val("");						
 	});		
 	
@@ -106,48 +113,23 @@ $('.alert_button').click(function() {
 	make_alerts();
 });
 
-//open up lightbox when "Alert Me" is clicked
-$('tr th:last-child, .alert_checkbox').bind("click", function() {
-	$('#text_message_lb').show();
+$("button.new_search").live("click", function() {
+	$(".pre_search").fadeIn("slow");
+	$("button.new_search").hide();
+	$("button.search_games").show();
+	$(".search_results .game_info").remove();
 });
 
 
-
+$('.alert_checkbox').live("click", function() {
+	var isChecked = $('#.alert_checkbox:checked').val()?true:false;
+	$('#text_message_lb').show();
+	if (isChecked === false) {
+		$('#text_message_lb').hide();
+	}
+});
 
 // allow user to close lightbox
 $('.close_button').click(function() {
 	$('#text_message_lb').hide();
 });
-/*
-function countdown() {
-	
-//		July 1, 2012, 8:45 pm
-	// Store the Final Gametime to be used for the ticker. 
-	var final_game_time = $('tbody tr:last-child td.game_time').text();
-
-
-	this.start_time = 
-	this.target_time = ".response";
-	
-	countdown.prototype.init() {
-		this.reset();
-		setInterval(this.name + '.tick()', 1000);
-	}
-	
-	countdown.prototype.reset() {
-		time = this.start_time.split(":");
-		this.minutes = parseInt(time_ary[0]);
-		this.seconds = parseInt(time_ary[1]);
-		this.update_target();
-	}
-	
-}
-*/
-
-
-
-
-
-
-
-

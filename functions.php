@@ -403,10 +403,11 @@ function printMatchedGames($team1 = '',$team2 = '') {
 	<?php	
 
 	}
+	/*	
 	else {
 		echo 'No matching games.';
 	}	
-	
+	*/
 }
 
 ?>

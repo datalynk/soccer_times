@@ -5,7 +5,7 @@ audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
-html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html { max-width:1280px; min-width:865px; margin: 0 auto; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 html, button, input, select, textarea { font-family: sans-serif; color: #222; }
 body { margin: 0; font-size: 1em; line-height: 1.4; }
 
@@ -13,12 +13,12 @@ body { margin: 0; font-size: 1em; line-height: 1.4; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
 
 a { color: #00e; text-decoration:none;}
-a:visited { color: white; }
 a:hover { color: #06e; }
 a:focus { outline: thin dotted; }
 a:hover, a:active { outline: 0; }
 abbr[title] { border-bottom: 1px dotted; }
 b, strong { font-weight: bold; }
+h2 {font-weight:normal};
 blockquote { margin: 1em 40px; }
 dfn { font-style: italic; }
 hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
@@ -165,6 +165,10 @@ footer {
 	font-weight: normal;
 }
 
+.pre_search {
+	width:100%;
+	height:auto;
+}
 h2.search_game_title {
 	text-align:center;
 	color:black;
@@ -231,15 +235,102 @@ button.search_games:hover {
 	text-align:center;
 }
 
+.button_nav {
+	display:inline;
+}
+.button_nav button {
+	margin-right: 20px;
+}
+
+button.search_butt {
+	background-image:url('/img/search_button.png');
+	background-repeat: no-repeat;
+	background-color:transparent;
+	display:inline;
+	margin: 0 auto;
+	height: 85px;
+	width: 85px;
+	border:none;
+	margin-right: 20px;
+}
+button.search_butt:hover {
+	background-image:url('/img/search_hover.png');
+}
+
+button.tweet_butt {
+	background-image:url('/img/tweet_button.png');
+	background-repeat: no-repeat;
+	background-color:transparent;
+	display:inline;
+	margin: 0 auto;
+	height: 85px;
+	width: 85px;
+	border:none;
+	margin-right: 20px;
+}
+
+button.tweet_butt:hover {
+	background-image:url('/img/tweet_hover.png');
+}
+
+button.alert_butt {
+	background-image:url('/img/alert_button.png');
+	background-repeat: no-repeat;
+	background-color:transparent;
+	display:inline;
+	margin: 0 auto;
+	height: 85px;
+	width: 85px;
+	border:none;
+	margin-right: 20px;
+}
+button.alert_butt:hover {
+	background-image:url('/img/alert_hover.png');	
+}
+button.buy_butt {
+	background-image:url('/img/buy_button.png');
+	background-repeat: no-repeat;
+	background-color:transparent;
+	display:inline;
+	margin: 0 auto;
+	height: 85px;
+	width: 85px;
+	border:none;
+	margin-right: 20px;
+}
+button.buy_butt:hover {
+	background-image:url('/img/buy_hover.png');	
+}
+
+button.new_search {
+	background-image:url('/img/search_button.png');
+	background-repeat: no-repeat;
+	background-color:transparent;
+	display:none;
+	margin: 0 auto;
+	height: 85px;
+	width: 85px;
+	border:none;
+}
+
+/*
+.button_nav img:hover{
+	color: #91b160;
+}
+*/
 
 /* --------- UPCOMING GAME (table and game info) section --------- */
 
+#upcoming {
+	font-family: Arial Narrow, Helvetica;
+}
 #upcoming a:visited {
 	color:darkgray;
 }
 
 #upcoming_games_title {
 	text-align:center;
+	font-weight: normal;
 }
 
 #upcoming_games_title h2 {
@@ -270,6 +361,7 @@ tr th:last-child:hover {
 
 tbody {
 	text-align:center;
+	font-family: arial narrow, helvetica;
 }
 
 /* --------  LightBox and Alert Functionality --------- */
@@ -280,7 +372,7 @@ tbody {
 	top:0;
 	left:0;
 	z-index: 10;
-	top: 50%;
+	top: 32%;
 	left: 25%;
 	background-color:white;
 	padding: 10px 15px;
