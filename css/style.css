@@ -164,13 +164,20 @@ footer {
 	width: 200px;
 }
 
+#teamy1, #teamy2 {
+	border-radius: 5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
 #teamy1 {
 	text-align:center;
 	padding:5px 0px;
 	width: 20%;
 	position:absolute;
-	top: 54%;
+	top: 32%;
 	left: 21%;
+	
 }
 
 #teamy2 {
@@ -178,10 +185,24 @@ footer {
 	padding:5px 0px;
 	width: 20%;
 	position:absolute;
-	top: 54%;
+	top: 32%;
 	right: 20%;
 }
 
+a.go {
+	background-image:url('/img/go.png');
+	background-repeat: no-repeat;
+	display:block;
+	margin: 0 auto;
+	height: 85px;
+	width: 85px;
+}
+
+.go:hover {
+	background-image:url('/img/goover.png');
+}
+
+/*TODO:  #what_game is is some old css that needs to be removed and looked at */
 #what_game {
 	text-align: center;
 	border-bottom: 1px solid;
@@ -291,6 +312,14 @@ form.text_alert .text_button {
 }
 
 /* --------- Table for Game Info --------- */
+
+h2.upcoming_banner {
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
+	background-color: #d6e0e4;
+}
+
+
 tr th.game_column {
 	padding-bottom: 12px;
 }
@@ -327,3 +356,67 @@ tbody {
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+
+
+
+@media only screen and (max-width:1200px) {
+	#teamy1 {
+		text-align:center;
+		padding:5px 0px;
+		width: 20%;
+		position:absolute;
+		top: 31%;
+		left: 21%;
+
+	}
+	#teamy2 {
+		text-align:center;
+		padding:5px 0px;
+		width: 20%;
+		position:absolute;
+		top: 31%;
+		right: 20%;
+	}
+}
+
+@media only screen and (max-width:1200px) {
+	#teamy1 {
+		text-align:center;
+		padding:5px 0px;
+		width: 20%;
+		position:absolute;
+		top: 31%;
+		left: 21%;
+
+	}
+	#teamy2 {
+		text-align:center;
+		padding:5px 0px;
+		width: 20%;
+		position:absolute;
+		top: 31%;
+		right: 20%;
+	}
+}
+@media only screen and (max-width:1014px) {
+	#teamy1 {
+		text-align:center;
+		padding:5px 0px;
+		width: 20%;
+		position:absolute;
+		top: 27.75%;
+		left: 21%;
+
+	}
+	#teamy2 {
+		text-align:center;
+		padding:5px 0px;
+		width: 20%;
+		position:absolute;
+		top: 27.75%;
+		right: 20%;
+	}
+}
+
+
+
