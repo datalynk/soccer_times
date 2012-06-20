@@ -82,9 +82,12 @@ function make_alerts() {
 				time_unit:$('#time_unit option:selected').val()
 	
 		};
-		$.post('ajax.php', tosend, function(response) {	
 		
-			alert(response);
+		$('#text_message_lb').html("<p>You will receive updates for the game! Enjoy</p>");
+		
+		$.post('ajax.php', tosend, function(response) {	
+			$('#text_message_lb').fadeOut(4000);
+		//	alert(response);
 		});
 	}
 	

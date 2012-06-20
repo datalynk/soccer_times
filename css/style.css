@@ -348,6 +348,7 @@ button.new_search {
 	background-color: #d6e0e4;
 	height: 52px;
 	margin-top: -17px;
+	display:none;
 }
 
 
