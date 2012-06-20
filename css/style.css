@@ -131,9 +131,6 @@ header nav a {
 	margin: 0px auto;
 	position:relative;
 	background-image:url('../img/stripes.png');
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius:10px;
 }
 
 
@@ -176,21 +173,21 @@ h2.search_game_title {
 	margin-right:auto;
 }
 
-#team1 , #team2 {
-	text-align:center;
-	padding: 5px 0px;
-	width: 200px;
-}
 
 #teamy1, #teamy2 {
 	border-radius: 5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
+	background-color:white;
+	opacity:0.8;
+	filter:alpha(opacity=40);
+	color: #b4c5ce;
+	border:none;
 }
 
 #teamy1 {
 	text-align:center;
-	padding:5px 0px;
+	padding:9px 0px;
 	width: 20%;
 	position:absolute;
 	top: 32%;
@@ -199,47 +196,32 @@ h2.search_game_title {
 
 #teamy2 {
 	text-align:center;
-	padding:5px 0px;
+	padding:9px 0px;
 	width: 20%;
 	position:absolute;
 	top: 32%;
 	right: 20%;
 }
 
-a.go {
+button.search_games {
 	background-image:url('/img/go.png');
 	background-repeat: no-repeat;
+	background-color:transparent;
 	display:block;
 	margin: 0 auto;
 	height: 85px;
 	width: 85px;
+	border:none;
+
 }
 
-.go:hover {
+button.search_games:hover {
 	background-image:url('/img/goover.png');
 }
 
-/*TODO:  #what_game is is some old css that needs to be removed and looked at */
-#what_game {
-	text-align: center;
+.search_results {
+	text-align:center;
 }
-
-#what_game input , #what_game button{
-	border-radius: 5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-}
-
-#what_game button {
-	margin-left: 16px;
-	background-color: royalblue;
-	border: 2px solid whitesmoke;
-	width: 5em;
-	height: 5em;
-	-webkit-border-radius: 5em; -moz-border-radius: 5em;
-	
-}
-
 
 
 /* --------- UPCOMING GAME (table and game info) section --------- */

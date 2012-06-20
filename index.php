@@ -23,31 +23,34 @@
 		<div class="transparency"> </div>
 		<div id="content">
 <!-- TODO: These inputs need to be hooked up to the backend. I think the best might be through AJAX? -->
+			
+		<!--	
 			<input type="text" id="teamy1" placeholder="team 1" /> 
 			<input type="text" id="teamy2" placeholder="team 2" />
-			
+		-->	
 			<header>
-				<img src="/img/line.png"/>
-				<img src="/img/soccerlogo.png"/>
-				<img src="/img/line.png"/>
+			
+				<img src="img/line.png"/>
+				<img src="img/soccerlogo.png"/>
+				<img src="img/line.png"/>
 				<nav>
-					<a href="#"><img src="/img/e-maillogo.png"/></a>
+					<a href="#"><img src="img/e-maillogo.png"/></a>
 				</nav>
 			</header>
 
 			<!-- Search section for what game a user is looking for -->
 			<h2 class="search_game_title">WHAT GAME ARE YOU LOOKING FOR?</h2>
 			<div id = "what_game">
-				<img class="venn" src="/img/venn-diagram.png"/>			
+				<img class="venn" src="img/venn-diagram.png"/>			
 				<a class="go" href="#"></a>
 				<?php include('find.php'); ?>
 			</div>
 		
 			<!-- Upcoming Games section. Shows games that will be coming up soon. -->
 			<div id="upcoming_games_title"</div>
-				<img src="/img/littleline.png"/>
+				<img src="img/littleline.png"/>
 				<h2 class="upcoming_games_title">Upcoming Games</h2>
-				<img src="/img/littleline.png"/>
+				<img src="img/littleline.png"/>
 			</div>
 			<div class="upcoming_banner"></div>
 			

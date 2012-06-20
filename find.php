@@ -12,8 +12,9 @@
 			<br />
             <br />            
 -->
-            <input type="text" id="team1" placeholder="team 1" /> &nbsp; vs. &nbsp; <input type="text" id="team2" placeholder="team 2" />
-            <button class="search_games"> Find Games </button>
+            <input type="text" id="teamy1" placeholder="ENTER TEAM 1" /> 
+			<input type="text" id="teamy2" placeholder="ENTER TEAM 2" />
+            <button class="search_games"></button>
             <br />
             <br />
             <div class="search_results">
