@@ -151,7 +151,7 @@ function updateTicketcity() {
 			$game['date_time'] =  strtotime(ConvertTimezoneToAnotherTimezone($date_time,$timezone,date_default_timezone_get()));
 			$game['other'] = $item->link;
 				
-			$db->insertOrUpdateIfExists('games',$game,$game);				
+			$db->insertOrUpdateIfExists('games',$game,array('sport'=>$game['sport'],'category'=>$game['category'],'match_name'=>$game['match_name']));				
 		}
 		
 		return true;
@@ -344,6 +344,69 @@ function ConvertTimezoneToAnotherTimezone($time,$currentTimezone,$timezoneRequir
     $timestamp = $date->format("Y-m-d H:i:s ");
        
     return $timestamp;
+}
+
+function printMatchedGames($team1 = '',$team2 = '') {
+	
+	
+	$games = getMatchedGames(trim(strtolower($team1)),trim(strtolower($team2)));
+	
+	if(count($games) > 0) { ?>
+		
+    <table class="game_info">
+      <tr>
+      
+        <th class="game_column" width="200">Teams</th>
+        <th class="game_column" width="200">Match</th>
+        <th class="game_column" width="200">Location</th>
+        <th class="game_column" width="200">Country</th>
+        <th class="game_column" width="200">Game Time</th>
+        <th class="game_column" width="200">Time Left</th>
+        <th class="game_column" width="200">Tickets</th>
+        <th class="alert_me" width="200">Alert Me</th>
+        
+      </tr>
+      <?php
+	  
+		foreach($games as $game) {
+
+			$time_difference = getTimeDifference($game['date_time']);
+			
+			$system_timezone = date_default_timezone_get();
+			
+    		date_default_timezone_set($game['timezone']);
+
+			$game_time = date("g:i a, F j, Y",$game['date_time']). ' ('.$game['timezone_abbr'].')';
+			
+			date_default_timezone_set($system_timezone);
+
+			$explode = explode(',',$game['location']);
+			$short_location = $explode[0];
+			 ?>
+            <tr>
+				<td><?=$game['teams']?></td>
+				<td><?=$game['match_name']?></td>
+				<td><?=$short_location?></td>
+				<td><?=$game['country']?></td>
+				<td class="game_time"><?=$game_time ?></td>
+				<td><?=$time_difference?></td>
+				<td><a href="<?=$game['other']?>">buy</a></td>
+                <td><input type="checkbox" class="alert_checkbox" id="alert_<?=$game['id']?>" /></td>
+                
+			</tr>	
+			<?php	
+		} ?>	  
+
+    </table>
+    
+     
+	<?php	
+
+	}
+	else {
+		echo 'No matching games.';
+	}	
+	
 }
 
 ?>

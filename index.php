@@ -1,3 +1,4 @@
+<?php require_once 'functions.php' ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -30,9 +31,9 @@
 		-->	
 			<header>
 			
-				<img src="img/line.png"/>
-				<img src="img/soccerlogo.png"/>
-				<img src="img/line.png"/>
+				<img class="bigline" src="img/line.png"/>
+				<img class="logo" src="img/soccerlogo.png"/>
+				<img class="bigline" src="img/line.png"/>
 				<nav>
 					<a href="#"><img src="img/e-maillogo.png"/></a>
 				</nav>
@@ -54,7 +55,7 @@
 			</div>
 			<div class="upcoming_banner"></div>
 			
-			<div id="upcoming"><?php echo file_get_contents('http://shaunpersad.com/soccer_times/ajax.php?action=get_matched_games') ?> </div>
+			<div id="upcoming"><?php printMatchedGames() ?> </div>
 			<div class="response"></div>
 		</div>
 		<div id="sidebar_right">			
