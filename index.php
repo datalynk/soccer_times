@@ -23,9 +23,7 @@
 	<div id="main_wrap">
 		<div class="transparency"> </div>
 		<div id="content">
-<!-- TODO: These inputs need to be hooked up to the backend. I think the best might be through AJAX? -->
 			<header>
-			
 				<img class="bigline" src="img/line.png"/>
 				<img class="logo" src="img/soccerlogo.png"/>
 				<img class="bigline" src="img/line.png"/>
@@ -35,18 +33,22 @@
 			</header>
 
 			<!-- Search section for what game a user is looking for -->
-			<h2 class="search_game_title">WHAT GAME ARE YOU LOOKING FOR?</h2>
+		
 			<div id = "what_game">
+				<h2 class="search_game_title">WHAT GAME ARE YOU LOOKING FOR?</h2>
 				<img class="venn" src="img/venn-diagram.png"/>			
 				<a class="go" href="#"></a>
-				<input type="text" id="teamy1" placeholder="ENTER TEAM 1" /> 
-				<input type="text" id="teamy2" placeholder="ENTER TEAM 2" />
-	            <button class="search_games"></button>
-				<div class="search_results">
+				<div id="input_holder">
+					<input type="text" id="teamy1" placeholder="ENTER TEAM 1" /> 
+					<input type="text" id="teamy2" placeholder="ENTER TEAM 2" />
+	            </div>
+				<button class="search_games"></button>
 			</div>
-		
+			
+			<div class="search_results"></div>
+			
 			<!-- Upcoming Games section. Shows games that will be coming up soon. -->
-			<div id="upcoming_games_title"</div>
+			<div id="upcoming_games_title">
 				<img src="img/littleline.png"/>
 				<h2 class="upcoming_games_title">Upcoming Games</h2>
 				<img src="img/littleline.png"/>
@@ -56,9 +58,7 @@
 			<div id="upcoming"><?php printMatchedGames() ?> </div>
 			<div class="response"></div>
 		</div>
-		<div id="sidebar_right">			
-		<!--	<div style="background:#000;width:350px; height:260px;font:0px sans-serif;text-align:left;"><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="cdtw" width="350" height="240" style="outline:none"><param name="movie" value="http://cdn.countingdownto.com/c/w.swf" /><param name="flashvars" value="eid=87549" /><param name="allowscriptaccess" value="always" /><param name="bgcolor" value="#000000" /><embed name="cdtw" src="http://cdn.countingdownto.com/c/w.swf" flashvars="eid=87549" type="application/x-shockwave-flash" width="350" height="240" allowscriptaccess="always" bgcolor="#000000" style="outline:none"></embed></object><br/></div> -->
-		</div>
+		
 		<div id="text_message_lb">
 			<img src="img/closebutton.png" href="#" class="close_button"/>
 			<h2>Fill in your e-mail and phone number to receive text message alerts for the next upcoming game.</h2>
@@ -86,7 +86,7 @@
 						before game   
 					</div>
 				</form>
-			<button class="alert_button">Alert me</button>
+			<button class="alert_button">GET ALERTS</button>
 		</div>
 	</div>
 	<footer>

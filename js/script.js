@@ -22,15 +22,19 @@ function get_search_results() {
 	
 	var tosend = {
 			action:'get_matched_games',
-			team1:$('#team1').val(),
-			team2:$('#team2').val()
+			team1:$('#teamy1').val(),
+			team2:$('#teamy2').val()
 	};
 	$.post('ajax.php', tosend, function(response) {
 					
 		if(response) {
-					
-			$('.search_results').html(response).fadeIn('fast');
-		}				
+
+			$("#what_game").children().fadeOut("slow",function(a) {
+				$('.search_results').html(response).fadeIn('fast');
+			});
+			
+		}	
+		$('input#teamy1, input#teamy2').val("");						
 	});		
 	
 }
@@ -139,7 +143,6 @@ function countdown() {
 	
 }
 */
-
 
 
 
