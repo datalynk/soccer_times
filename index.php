@@ -24,11 +24,6 @@
 		<div class="transparency"> </div>
 		<div id="content">
 <!-- TODO: These inputs need to be hooked up to the backend. I think the best might be through AJAX? -->
-			
-		<!--	
-			<input type="text" id="teamy1" placeholder="team 1" /> 
-			<input type="text" id="teamy2" placeholder="team 2" />
-		-->	
 			<header>
 			
 				<img class="bigline" src="img/line.png"/>
@@ -44,7 +39,10 @@
 			<div id = "what_game">
 				<img class="venn" src="img/venn-diagram.png"/>			
 				<a class="go" href="#"></a>
-				<?php include('find.php'); ?>
+				<input type="text" id="teamy1" placeholder="ENTER TEAM 1" /> 
+				<input type="text" id="teamy2" placeholder="ENTER TEAM 2" />
+	            <button class="search_games"></button>
+				<div class="search_results">
 			</div>
 		
 			<!-- Upcoming Games section. Shows games that will be coming up soon. -->
