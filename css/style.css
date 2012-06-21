@@ -365,6 +365,10 @@ tbody {
 	font-family: arial narrow, helvetica;
 }
 
+th.alert_me {
+	padding-bottom:14px;
+}
+
 /* --------  LightBox and Alert Functionality --------- */
 #text_message_lb {
 	width: 500px;
@@ -505,12 +509,36 @@ form.text_alert .text_button {
 }
 
 @media only screen and (max-width:680px) {
+	html {
+		min-width:600px;
+	}
 	h2.search_game_title {
 		font-size: 1.8em;
+		position: relative;
+		padding-bottom: 50px;
 	}
+	
 	#content .venn {
 		display:none;
 	}
+	
+	#input_holder {
+		width: 100%;
+		height: 50px;
+		position: absolute;
+		top: 290px;
+	}
+	
+	button.search_games {
+		margin-bottom: 0px;
+		top: 400px;
+	}
+}
+
+/* iPhone and Android Rules */
+
+@media only sceren and (min-device-width:320px) and (max-device-width:480px) {
+	
 }
 
 
