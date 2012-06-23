@@ -28,7 +28,7 @@
 				<img class="logo" src="img/soccerlogo.png"/>
 				<img class="bigline" src="img/line.png"/>
 				<nav>
-					<a href="mailto:alex@newspanion.com?Subject=Hello!"><img src="img/e-maillogo.png"/></a>
+					<a href="mailto:alex@newspanion.com?Subject=Hello!"><img class="email_logo" src="img/e-maillogo.png"/></a>
 				</nav>
 			</header>
 

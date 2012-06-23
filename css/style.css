@@ -510,14 +510,18 @@ form.text_alert .text_button {
 
 @media only screen and (max-width:680px) {
 	html {
-		min-width:600px;
+		max-width: 1280px;
+		min-width: 480px;	
 	}
 	h2.search_game_title {
 		font-size: 1.8em;
 		position: relative;
 		padding-bottom: 50px;
 	}
-	
+	#content {
+		width:90%;
+		padding: 0px;
+	}
 	#content .venn {
 		display:none;
 	}
@@ -526,21 +530,54 @@ form.text_alert .text_button {
 		width: 100%;
 		height: 50px;
 		position: absolute;
-		top: 290px;
+		top: 274px;
+	}
+	
+	#teamy1, #teamy2 {
+		width: 200px;	
+	}
+	
+	#teamy1 {
+		margin-left:0px;
+		float:left;
+	}
+	#teamy2{
+		float:right;
+		margin-left:0px;
 	}
 	
 	button.search_games {
 		margin-bottom: 0px;
 		top: 400px;
+		margin-top: 30px;
 	}
-}
-
-/* iPhone and Android Rules */
-
-@media only sceren and (min-device-width:320px) and (max-device-width:480px) {
+	
+	header .bigline{
+		width: 20%;
+	}
+	
+	#upcoming_games_title img {
+		width: 10%;
+	}
 	
 }
 
+
+/* iPhone and Android Rules */
+
+@media only screen and (max-width:480px) {
+	#content {
+		width:100%;
+	}
+	
+	tr:first-child {
+		display:none;
+	}
+	
+	#text_message_lb {
+		width:60%;
+	}
+}
 
 	
 
