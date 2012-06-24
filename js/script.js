@@ -94,6 +94,17 @@ function make_alerts() {
 }
 
 // --------- Event Handlers ---------- //
+$('p.about_link').click(function() {
+	$('#about').show();
+	$('#what_game').hide();
+});
+
+$('header img.logo').live("click", function() {
+	$("#about").hide();
+	$("#what_game").show();
+});
+
+
 $('button.text_button').click(function() {
 	submit_and_text();
 });
@@ -136,4 +147,3 @@ $('.alert_checkbox').live("click", function() {
 $('.close_button').click(function() {
 	$('#text_message_lb').hide();
 });
-

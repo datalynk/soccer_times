@@ -97,15 +97,24 @@ header h1 {
 }
 
 header nav {
-	margin-left: -35px;
-	margin-top: 54px;
+	margin-left: -95px;
+	margin-top: 46px;
 	display: inline;
 	position: absolute;
 
 }
 header nav a {
-	color:white;
+	color:#d6e0e4;
 	padding-right:20px;
+}
+
+header nav p.about_link {
+	display:inline;
+	font-size:1.3em;
+}
+
+header nav p.about_link:visited {
+	color:#d6e0e4;
 }
 
 header .bigline {
@@ -152,6 +161,22 @@ header .bigline {
 
 footer {
 	
+}
+
+/*  --------- ABOUT Section -------- */
+
+#about {
+	text-align:center;
+	width:53%;
+	margin:0 auto;
+	display:none;
+}
+#about h1 {
+	text-align:center;
+}
+#about h3 , #about p {
+	font-family:Arial;
+	text-align:left;
 }
 
 /* --------- WHAT GAME (search) Section --------- */

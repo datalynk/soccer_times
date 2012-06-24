@@ -25,15 +25,24 @@
 		<div id="content">
 			<header>
 				<img class="bigline" src="img/line.png"/>
-				<img class="logo" src="img/soccerlogo.png"/>
+				<a href=#><img class="logo" src="img/soccerlogo.png"/></a>
 				<img class="bigline" src="img/line.png"/>
 				<nav>
+					<a href="#"><p class="about_link">About</p>
 					<a href="mailto:alex@newspanion.com?Subject=Hello!"><img class="email_logo" src="img/e-maillogo.png"/></a>
 				</nav>
 			</header>
-
+			<!-- About Section -->
+			<div id="about">
+				<h1> About</h1>
+				<h3>Trying to figure out what time the sports game is at?</h3>
+				<p>We built this site for that reason. We want to help you find out what time your game is being played. Right now, we
+				are providing the Euro 2012 Soccer Schedule. There is more to come in the future. 
+				</p>
+			</div>
+			
+			
 			<!-- Search section for what game a user is looking for -->
-		
 			<div id = "what_game">
 				<div class="pre_search">
 					<h2 class="search_game_title">WHAT GAME ARE YOU LOOKING FOR?</h2>
